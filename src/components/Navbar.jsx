@@ -26,18 +26,18 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? 'glass py-3' : 'bg-transparent py-5'
+        scrolled || isOpen ? 'glass py-3' : 'bg-transparent py-5'
       }`}
     >
-      <div className="container mx-auto px-4 sm:px-6 flex justify-between items-center">
+      <div className="container mx-auto px-6 sm:px-8 md:px-12 flex justify-between items-center">
         <Link
           to="hero"
           smooth={true}
           duration={500}
           className="cursor-pointer flex items-center gap-3"
         >
-          {/* Mobile Logo Image */}
-          <img src="/favicon.svg" alt="S Logo" className="w-10 h-10 sm:hidden block rounded-lg shadow-sm" />
+          {/* Mobile Logo Image (Profile Picture) */}
+          <img src="/santu1.png" alt="Santhosha" className="w-10 h-10 sm:hidden block rounded-full object-cover border border-gray-200 shadow-sm" />
           
           {/* Desktop Text Logo */}
           <span className="hidden sm:block text-lg sm:text-2xl font-bold text-gray-900 tracking-tight">
@@ -87,9 +87,9 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden glass border-t border-white/20"
+            className="absolute top-full left-0 w-full lg:hidden glass border-t border-white/20 overflow-hidden shadow-xl"
           >
-            <div className="flex flex-col space-y-4 px-6 py-6">
+            <div className="flex flex-col space-y-2 px-6 py-6 bg-white/40">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
@@ -98,11 +98,20 @@ const Navbar = () => {
                   duration={500}
                   offset={-70}
                   onClick={() => setIsOpen(false)}
-                  className="text-gray-800 font-medium hover:text-blue-600"
+                  className="text-gray-800 font-medium hover:text-blue-600 block w-full px-4 py-3 rounded-xl hover:bg-white/60 transition-colors"
                 >
                   {link.name}
                 </Link>
               ))}
+              <Link
+                to="contact"
+                smooth={true}
+                duration={500}
+                onClick={() => setIsOpen(false)}
+                className="mt-4 px-6 py-3 bg-gray-900 text-white text-center rounded-xl font-medium hover:bg-blue-600 transition-colors cursor-pointer"
+              >
+                Hire Me
+              </Link>
             </div>
           </motion.div>
         )}
