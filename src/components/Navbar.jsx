@@ -36,8 +36,10 @@ const Navbar = () => {
           duration={500}
           className="cursor-pointer flex items-center gap-3"
         >
-          {/* Mobile Logo Image (Profile Picture) */}
-          <img src="/santu1.png" alt="Santhosha" className="w-10 h-10 sm:hidden block rounded-full object-cover border border-gray-200 shadow-sm" />
+          {/* Mobile Logo Image (S Logo) */}
+          <div className="w-10 h-10 sm:hidden flex items-center justify-center rounded-lg bg-gradient-to-r from-blue-600 to-emerald-600 text-white font-bold text-xl shadow-md">
+            S
+          </div>
           
           {/* Desktop Text Logo */}
           <span className="hidden sm:block text-lg sm:text-2xl font-bold text-gray-900 tracking-tight">
@@ -89,7 +91,7 @@ const Navbar = () => {
             exit={{ opacity: 0, height: 0 }}
             className="absolute top-full left-0 w-full lg:hidden glass border-t border-white/20 overflow-hidden shadow-xl"
           >
-            <div className="flex flex-col space-y-2 px-6 py-6 bg-white/40">
+            <div className="flex flex-col space-y-3 px-6 py-8 bg-white/50 backdrop-blur-md">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
@@ -98,7 +100,7 @@ const Navbar = () => {
                   duration={500}
                   offset={-70}
                   onClick={() => setIsOpen(false)}
-                  className="text-gray-800 font-medium hover:text-blue-600 block w-full px-4 py-3 rounded-xl hover:bg-white/60 transition-colors"
+                  className="text-gray-800 text-center font-semibold text-lg hover:text-blue-600 block w-full px-4 py-3 rounded-2xl hover:bg-white/60 transition-colors shadow-sm border border-white/40"
                 >
                   {link.name}
                 </Link>
@@ -108,7 +110,7 @@ const Navbar = () => {
                 smooth={true}
                 duration={500}
                 onClick={() => setIsOpen(false)}
-                className="mt-4 px-6 py-3 bg-gray-900 text-white text-center rounded-xl font-medium hover:bg-blue-600 transition-colors cursor-pointer"
+                className="mt-6 px-6 py-4 bg-gradient-to-r from-blue-600 to-emerald-600 text-white text-center rounded-2xl font-bold text-lg hover:shadow-lg transition-all cursor-pointer"
               >
                 Hire Me
               </Link>
