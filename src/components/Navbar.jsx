@@ -34,9 +34,15 @@ const Navbar = () => {
           to="hero"
           smooth={true}
           duration={500}
-          className="text-lg sm:text-2xl font-bold text-gray-900 cursor-pointer tracking-tight"
+          className="cursor-pointer flex items-center gap-3"
         >
-          SANTHOSHA A D<span className="text-blue-600">.</span>
+          {/* Mobile Logo Image */}
+          <img src="/favicon.svg" alt="S Logo" className="w-10 h-10 sm:hidden block rounded-lg shadow-sm" />
+          
+          {/* Desktop Text Logo */}
+          <span className="hidden sm:block text-lg sm:text-2xl font-bold text-gray-900 tracking-tight">
+            SANTHOSHA A D<span className="text-blue-600">.</span>
+          </span>
         </Link>
 
         {/* Desktop Menu */}
