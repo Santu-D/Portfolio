@@ -14,7 +14,7 @@ const Footer = () => {
         
         <div className="flex justify-center space-x-6 mb-8">
           <a
-            href="https://linkedin.com/in/santhoshad"
+            href="https://www.linkedin.com/in/santhosh-ad"
             target="_blank"
             rel="noopener noreferrer"
             className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300"

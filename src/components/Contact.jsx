@@ -48,8 +48,8 @@ const Contact = () => {
                 <FaLinkedin size={24} />
               </div>
               <h4 className="text-sm font-semibold text-gray-500 uppercase tracking-widest mb-2">LinkedIn</h4>
-              <a href="https://linkedin.com/in/santhoshad" target="_blank" rel="noopener noreferrer" className="text-lg text-gray-900 font-semibold hover:text-[#0A66C2] transition-colors break-all">
-                linkedin.com/in/santhoshad
+              <a href="https://www.linkedin.com/in/santhosh-ad" target="_blank" rel="noopener noreferrer" className="text-lg text-gray-900 font-semibold hover:text-[#0A66C2] transition-colors break-all">
+                linkedin.com/in/santhosh-ad
               </a>
             </div>
             
