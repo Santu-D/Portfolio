@@ -13,7 +13,7 @@ import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="w-full min-h-screen bg-[#FAFCFF] font-sans">
+    <div className="w-full min-h-screen bg-[#FAFCFF] font-sans overflow-x-hidden">
       <Navbar />
       <main>
         <Hero />

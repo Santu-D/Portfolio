@@ -111,7 +111,7 @@ const Hero = () => {
             
             <motion.h1 
               variants={itemVariants}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 leading-tight mb-4 tracking-tighter whitespace-nowrap overflow-hidden"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 leading-tight mb-4 tracking-tighter"
             >
               SANTHOSHA A D
             </motion.h1>
