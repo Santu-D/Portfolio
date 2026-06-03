@@ -81,25 +81,23 @@ const Achievements = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="w-full lg:w-1/2 grid grid-cols-2 gap-6"
+            className="w-full lg:w-1/2 grid grid-cols-2 gap-4 sm:gap-6 mt-10 lg:mt-0"
           >
-            <div className="grid grid-cols-2 gap-4">
-              <div className="glass-card p-6 md:p-8 text-center flex flex-col items-center justify-center min-h-[140px]">
-                <Counter from={0} to={6} suffix="+" />
-                <p className="text-gray-600 font-semibold mt-2 text-sm">Enterprise Projects</p>
-              </div>
-              <div className="glass-card p-6 md:p-8 text-center flex flex-col items-center justify-center min-h-[140px]">
-                <Counter from={0} to={5} suffix="+" />
-                <p className="text-gray-600 font-semibold mt-2 text-sm">Cloud Certifications</p>
-              </div>
-              <div className="glass-card p-6 md:p-8 text-center flex flex-col items-center justify-center min-h-[140px]">
-                <Counter from={0} to={25} suffix="+" />
-                <p className="text-gray-600 font-semibold mt-2 text-sm">Tech Stack</p>
-              </div>
-              <div className="glass-card p-6 md:p-8 text-center flex flex-col items-center justify-center min-h-[140px]">
-                <Counter from={0} to={100} suffix="%" />
-                <p className="text-gray-600 font-semibold mt-2 text-sm">Commitment</p>
-              </div>
+            <div className="glass-card p-4 sm:p-6 md:p-8 text-center flex flex-col items-center justify-center min-h-[140px]">
+              <Counter from={0} to={6} suffix="+" />
+              <p className="text-gray-600 font-semibold mt-2 text-xs sm:text-sm">Enterprise Projects</p>
+            </div>
+            <div className="glass-card p-4 sm:p-6 md:p-8 text-center flex flex-col items-center justify-center min-h-[140px]">
+              <Counter from={0} to={5} suffix="+" />
+              <p className="text-gray-600 font-semibold mt-2 text-xs sm:text-sm">Cloud Certifications</p>
+            </div>
+            <div className="glass-card p-4 sm:p-6 md:p-8 text-center flex flex-col items-center justify-center min-h-[140px]">
+              <Counter from={0} to={25} suffix="+" />
+              <p className="text-gray-600 font-semibold mt-2 text-xs sm:text-sm">Tech Stack</p>
+            </div>
+            <div className="glass-card p-4 sm:p-6 md:p-8 text-center flex flex-col items-center justify-center min-h-[140px]">
+              <Counter from={0} to={100} suffix="%" />
+              <p className="text-gray-600 font-semibold mt-2 text-xs sm:text-sm">Commitment</p>
             </div>
           </motion.div>
         </div>
