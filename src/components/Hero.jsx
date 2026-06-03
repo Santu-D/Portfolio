@@ -83,7 +83,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="hero" className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden min-h-screen flex items-center">
+    <section id="hero" className="relative pt-32 pb-20 md:pt-40 md:pb-32 lg:pt-48 lg:pb-32 overflow-hidden">
       {/* Premium Background */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
