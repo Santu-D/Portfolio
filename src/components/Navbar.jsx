@@ -36,15 +36,10 @@ const Navbar = () => {
           duration={500}
           className="cursor-pointer flex items-center gap-3"
         >
-          {/* Mobile Logo Image (S Logo) */}
-          <div className="w-10 h-10 sm:hidden flex items-center justify-center rounded-lg bg-gradient-to-r from-blue-600 to-emerald-600 text-white font-bold text-xl shadow-md">
+          {/* Logo */}
+          <div className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 to-emerald-600 text-white font-bold text-2xl sm:text-3xl shadow-lg transition-transform hover:scale-105">
             S
           </div>
-          
-          {/* Desktop Text Logo */}
-          <span className="hidden sm:block text-lg sm:text-2xl font-bold text-gray-900 tracking-tight">
-            SANTHOSHA A D<span className="text-blue-600">.</span>
-          </span>
         </Link>
 
         {/* Desktop Menu */}
