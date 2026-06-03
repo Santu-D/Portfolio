@@ -135,7 +135,7 @@ const Hero = () => {
               className="flex flex-col sm:flex-row w-full sm:w-auto gap-4"
             >
               <a 
-                href="/SANTHOSHA_2026.pdf" 
+                href="/Santhosha A D_2026.pdf" 
                 download="SANTHOSHA_A_D_Resume.pdf"
                 target="_blank" 
                 rel="noopener noreferrer"
