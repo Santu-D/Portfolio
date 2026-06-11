@@ -52,6 +52,20 @@
     @apply absolute rounded-full mix-blend-multiply filter blur-[100px] opacity-40;
     animation: blob 10s infinite alternate;
   }
+
+  .gradient-text-sweep {
+    background: linear-gradient(90deg, #2563eb, #059669, #3b82f6, #059669, #2563eb);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textSweep 3s linear infinite;
+  }
+}
+
+@keyframes textSweep {
+  to {
+    background-position: 200% center;
+  }
 }
 
 @keyframes gradientGlow {
@@ -96,4 +110,5 @@
 /* Base styles for native smooth scroll */
 html {
   scroll-behavior: smooth;
+  scrollbar-gutter: stable;
 }

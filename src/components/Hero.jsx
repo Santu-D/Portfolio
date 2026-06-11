@@ -40,7 +40,7 @@ const Typewriter = ({ texts, typingSpeed = 100, deletingSpeed = 50, delay = 1500
   );
 };
 
-const Hero = () => {
+const Hero = ({ introPhase }) => {
   const titles = [
     'Lead Software Engineer',
     'Azure DevOps Engineer',
@@ -50,15 +50,20 @@ const Hero = () => {
     'Solution Architect',
   ];
 
-  const logoAnimation = (delay) => ({
-    y: [0, -20, 0],
-    rotate: [0, 8, -8, 0],
-    transition: {
-      duration: 5,
-      repeat: Infinity,
-      ease: 'easeInOut',
-      delay: delay
-    },
+  const logoVariants = (delay) => ({
+    hidden: { opacity: 0, scale: 0 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      y: [0, -16, 0],
+      rotate: [0, 8, -8, 0],
+      transition: {
+        scale: { duration: 0.4, delay: delay + 0.4 },
+        opacity: { duration: 0.4, delay: delay + 0.4 },
+        y: { duration: 5, repeat: Infinity, ease: 'easeInOut', delay: delay },
+        rotate: { duration: 5, repeat: Infinity, ease: 'easeInOut', delay: delay }
+      }
+    }
   });
 
   const containerVariants = {
@@ -66,14 +71,14 @@ const Hero = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1,
+        staggerChildren: 0.15,
+        delayChildren: 0.4, // Wait for image transition to complete
       }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: -40, filter: 'blur(10px)' },
+    hidden: { opacity: 0, y: -25, filter: 'blur(10px)' },
     visible: { 
       opacity: 1, 
       y: 0, 
@@ -99,7 +104,7 @@ const Hero = () => {
           <motion.div 
             variants={containerVariants}
             initial="hidden"
-            animate="visible"
+            animate={introPhase >= 4 ? "visible" : "hidden"}
             className="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left mt-8 md:mt-0"
           >
             <motion.div 
@@ -120,7 +125,7 @@ const Hero = () => {
               variants={itemVariants}
               className="text-xl sm:text-2xl md:text-3xl text-gray-700 mb-6 h-10 font-medium"
             >
-              I am a <Typewriter texts={titles} />
+              I am a {introPhase >= 4 ? <Typewriter texts={titles} /> : null}
             </motion.div>
 
             <motion.p 
@@ -155,16 +160,16 @@ const Hero = () => {
           </motion.div>
 
           {/* Right Image Side */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
-            animate={{ opacity: 1, scale: 1, rotate: 0 }}
-            transition={{ type: 'spring', stiffness: 80, damping: 20, delay: 0.4 }}
-            className="w-full md:w-1/2 relative flex justify-center mt-10 md:mt-0"
-          >
+          <div className="w-full md:w-1/2 relative flex justify-center mt-10 md:mt-0">
             {/* Premium Circular Profile Wrapper */}
             <motion.div 
-              animate={{ y: [-10, 10, -10] }}
-              transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+              initial={{ opacity: 0, scale: 0.92 }}
+              animate={introPhase >= 4 ? { opacity: 1, scale: 1, y: [-10, 10, -10] } : { opacity: 0, scale: 0.92 }}
+              transition={{
+                opacity: { duration: 0.8, ease: "easeOut", delay: 0.2 },
+                scale: { duration: 0.8, ease: "easeOut", delay: 0.2 },
+                y: { duration: 6, repeat: Infinity, ease: 'easeInOut' }
+              }}
               className="relative w-80 h-80 sm:w-96 sm:h-96 lg:w-[420px] lg:h-[420px] rounded-full p-[2px] bg-gradient-to-tr from-blue-200 via-sky-100 to-indigo-300 shadow-[0_0_60px_rgba(59,130,246,0.15)]"
             >
               <div className="w-full h-full rounded-full overflow-hidden border-[6px] border-white bg-[#FAFCFF] relative z-10 shadow-inner">
@@ -177,30 +182,60 @@ const Hero = () => {
             </motion.div>
 
             {/* Floating Logos */}
-            <motion.div animate={logoAnimation(0)} className="absolute top-4 left-0 sm:left-4 lg:-left-6 text-[#0078D4] bg-white/70 backdrop-blur-md border border-white p-3.5 rounded-full shadow-[0_8px_16px_rgba(0,0,0,0.06)] z-20 hover:scale-110 transition-transform">
+            <motion.div
+              variants={logoVariants(0)}
+              initial="hidden"
+              animate={introPhase >= 4 ? "visible" : "hidden"}
+              className="absolute top-4 left-0 sm:left-4 lg:-left-6 text-[#0078D4] bg-white/70 backdrop-blur-md border border-white p-3.5 rounded-full shadow-[0_8px_16px_rgba(0,0,0,0.06)] z-20 hover:scale-110 transition-transform"
+            >
               <VscAzure size={26} />
             </motion.div>
             
-            <motion.div animate={logoAnimation(0.5)} className="absolute top-24 right-0 sm:-right-6 text-[#FF9900] bg-white/70 backdrop-blur-md border border-white p-3.5 rounded-full shadow-[0_8px_16px_rgba(0,0,0,0.06)] z-20 hover:scale-110 transition-transform">
+            <motion.div
+              variants={logoVariants(0.5)}
+              initial="hidden"
+              animate={introPhase >= 4 ? "visible" : "hidden"}
+              className="absolute top-24 right-0 sm:-right-6 text-[#FF9900] bg-white/70 backdrop-blur-md border border-white p-3.5 rounded-full shadow-[0_8px_16px_rgba(0,0,0,0.06)] z-20 hover:scale-110 transition-transform"
+            >
               <FaAws size={26} />
             </motion.div>
             
-            <motion.div animate={logoAnimation(1)} className="absolute bottom-16 left-0 sm:-left-8 text-[#C74634] bg-white/70 backdrop-blur-md border border-white p-3.5 rounded-full shadow-[0_8px_16px_rgba(0,0,0,0.06)] z-20 hover:scale-110 transition-transform">
+            <motion.div
+              variants={logoVariants(1)}
+              initial="hidden"
+              animate={introPhase >= 4 ? "visible" : "hidden"}
+              className="absolute bottom-16 left-0 sm:-left-8 text-[#C74634] bg-white/70 backdrop-blur-md border border-white p-3.5 rounded-full shadow-[0_8px_16px_rgba(0,0,0,0.06)] z-20 hover:scale-110 transition-transform"
+            >
               <FaDatabase size={26} />
             </motion.div>
             
-            <motion.div animate={logoAnimation(1.5)} className="absolute -bottom-6 right-16 sm:right-24 text-[#336791] bg-white/70 backdrop-blur-md border border-white p-3.5 rounded-full shadow-[0_8px_16px_rgba(0,0,0,0.06)] z-20 hover:scale-110 transition-transform">
+            <motion.div
+              variants={logoVariants(1.5)}
+              initial="hidden"
+              animate={introPhase >= 4 ? "visible" : "hidden"}
+              className="absolute -bottom-6 right-16 sm:right-24 text-[#336791] bg-white/70 backdrop-blur-md border border-white p-3.5 rounded-full shadow-[0_8px_16px_rgba(0,0,0,0.06)] z-20 hover:scale-110 transition-transform"
+            >
               <FaDocker size={26} />
             </motion.div>
             
-            <motion.div animate={logoAnimation(0.8)} className="absolute -top-6 right-24 text-[#181717] bg-white/70 backdrop-blur-md border border-white p-3.5 rounded-full shadow-[0_8px_16px_rgba(0,0,0,0.06)] z-20 hover:scale-110 transition-transform">
+            <motion.div
+              variants={logoVariants(0.8)}
+              initial="hidden"
+              animate={introPhase >= 4 ? "visible" : "hidden"}
+              className="absolute -top-6 right-24 text-[#181717] bg-white/70 backdrop-blur-md border border-white p-3.5 rounded-full shadow-[0_8px_16px_rgba(0,0,0,0.06)] z-20 hover:scale-110 transition-transform"
+            >
               <FaGithub size={26} />
             </motion.div>
             
-            <motion.div animate={logoAnimation(1.2)} className="absolute bottom-4 left-24 text-[#7B42BC] bg-white/70 backdrop-blur-md border border-white p-3.5 rounded-full shadow-[0_8px_16px_rgba(0,0,0,0.06)] z-20 hover:scale-110 transition-transform">
+            <motion.div
+              variants={logoVariants(1.2)}
+              initial="hidden"
+              animate={introPhase >= 4 ? "visible" : "hidden"}
+              className="absolute bottom-4 left-24 text-[#7B42BC] bg-white/70 backdrop-blur-md border border-white p-3.5 rounded-full shadow-[0_8px_16px_rgba(0,0,0,0.06)] z-20 hover:scale-110 transition-transform"
+            >
               <FaCubes size={26} />
             </motion.div>
-          </motion.div>
+          </div>
           
         </div>
       </div>
