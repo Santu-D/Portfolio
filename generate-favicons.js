@@ -52,6 +52,27 @@ async function generateFavicons() {
     await fs.promises.writeFile(path.join(outputDir, 'favicon-32x32.png'), png32);
     console.log('Created favicon-32x32.png');
 
+    const png48 = await sharp(input)
+      .resize(48, 48)
+      .png()
+      .toBuffer();
+    await fs.promises.writeFile(path.join(outputDir, 'favicon-48x48.png'), png48);
+    console.log('Created favicon-48x48.png');
+
+    const png96 = await sharp(input)
+      .resize(96, 96)
+      .png()
+      .toBuffer();
+    await fs.promises.writeFile(path.join(outputDir, 'favicon-96x96.png'), png96);
+    console.log('Created favicon-96x96.png');
+
+    const png192 = await sharp(input)
+      .resize(192, 192)
+      .png()
+      .toBuffer();
+    await fs.promises.writeFile(path.join(outputDir, 'favicon-192x192.png'), png192);
+    console.log('Created favicon-192x192.png');
+
     const appleTouch = await sharp(input)
       .resize(180, 180)
       .png()
@@ -62,10 +83,11 @@ async function generateFavicons() {
     // 2. Generate multi-resolution ICO file
     const icoBuffer = createIco([
       { width: 16, height: 16, buffer: png16 },
-      { width: 32, height: 32, buffer: png32 }
+      { width: 32, height: 32, buffer: png32 },
+      { width: 48, height: 48, buffer: png48 }
     ]);
     await fs.promises.writeFile(path.join(outputDir, 'favicon.ico'), icoBuffer);
-    console.log('Created favicon.ico (multi-resolution 16x16 and 32x32)');
+    console.log('Created favicon.ico (multi-resolution 16x16, 32x32, and 48x48)');
 
     console.log('All favicons generated successfully!');
   } catch (error) {
